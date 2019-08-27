@@ -1,4 +1,4 @@
-#!/home/rafael/Documents/microblog/venv/bin/python
+#!/home/rafael/Documents/meu/microblog/venv/bin/python
 
 import sys
 import getopt
