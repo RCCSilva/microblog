@@ -1,0 +1,54 @@
+2019-09-09 21:50:50,381 ERROR: Exception on /login [POST] [in /home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py:1891
+Traceback (most recent call last):
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 538, in _get_strategy
+    return self._strategies[key]
+KeyError: (('lazy', 'dynami'),)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/rafael/Documents/meu/microblog/app/routes.py", line 32, in login
+    user = User.query.filter_by(username=form.username.data).first()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/base.py", line 441, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/base.py", line 420, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 1337, in _configure_all
+    configure_mappers()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 3229, in configure_mappers
+    mapper._post_configure_properties()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 1947, in _post_configure_properties
+    prop.init()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 196, in init
+    self.do_init()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/relationships.py", line 1864, in do_init
+    self._generate_backref()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/relationships.py", line 2121, in _generate_backref
+    mapper._configure_property(backref_key, relationship)
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 1840, in _configure_property
+    prop.init()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 196, in init
+    self.do_init()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/relationships.py", line 1866, in do_init
+    super(RelationshipProperty, self).do_init()
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 570, in do_init
+    self.strategy = self._get_strategy(self.strategy_key)
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 540, in _get_strategy
+    cls = self._strategy_lookup(self, *key)
+  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 619, in _strategy_lookup
+    key,
+sqlalchemy.orm.exc.LoaderStrategyException: Can't find strategy (('lazy', 'dynami'),) for User.followers
