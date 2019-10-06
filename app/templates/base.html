@@ -53,4 +53,20 @@
     {{ super() }}
     {{ moment.include_moment() }}
     {{ moment.lang(g.locale) }}
+
+    <script type="text/javascript">
+        function translate(sourceElem, destElem, sourceLang, destLang) {
+            let current_text = $(sourceElem).text()
+            $(sourceElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+            $.post('/translate', {
+                text: current_text,
+                source_language: sourceLang,
+                dest_language: destLang
+            }).done(function(response) {
+                $(sourceElem).text(response['text'])
+            }).fail(function () {
+                $(sourceElem).text(" {{ _('Error: could not contact server') }}")
+            });
+        }
+    </script>
 {% endblock %}
