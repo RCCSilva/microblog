@@ -1,54 +1,129 @@
-2019-09-09 21:50:50,381 ERROR: Exception on /login [POST] [in /home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py:1891
+2019-10-12 18:36:37,099 ERROR: Unhandled exception [in ./app/tasks.py:63]
 Traceback (most recent call last):
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 538, in _get_strategy
-    return self._strategies[key]
-KeyError: (('lazy', 'dynami'),)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask_mail.py", line 427, in send
+    connection.send(self)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask_mail.py", line 192, in send
+    message.rcpt_options)
+  File "/usr/lib/python3.6/smtplib.py", line 852, in sendmail
+    self.ehlo_or_helo_if_needed()
+  File "/usr/lib/python3.6/smtplib.py", line 600, in ehlo_or_helo_if_needed
+    if not (200 <= self.ehlo()[0] <= 299):
+  File "/usr/lib/python3.6/smtplib.py", line 440, in ehlo
+    self.putcmd(self.ehlo_msg, name or self.local_hostname)
+  File "/usr/lib/python3.6/smtplib.py", line 367, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.6/smtplib.py", line 359, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+  File "./app/tasks.py", line 59, in export_posts
+    sync=True)
+  File "./app/email.py", line 19, in send_email
+    mail.send(msg)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask_mail.py", line 152, in __exit__
+    self.host.quit()
+  File "/usr/lib/python3.6/smtplib.py", line 984, in quit
+    res = self.docmd("quit")
+  File "/usr/lib/python3.6/smtplib.py", line 420, in docmd
+    self.putcmd(cmd, args)
+  File "/usr/lib/python3.6/smtplib.py", line 367, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.6/smtplib.py", line 359, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+2019-10-13 11:31:05,728 INFO: Microblog startup [in /home/rafael/Documents/meu/microblog/app/__init__.py:86]
+2019-10-13 11:31:41,323 ERROR: Exception on /api/users/1 [GET] [in /home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
     rv = self.dispatch_request()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/rafael/Documents/meu/microblog/app/routes.py", line 32, in login
-    user = User.query.filter_by(username=form.username.data).first()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 517, in __get__
-    mapper = orm.class_mapper(type)
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/base.py", line 441, in class_mapper
-    mapper = _inspect_mapped_class(class_, configure=configure)
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/base.py", line 420, in _inspect_mapped_class
-    mapper._configure_all()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 1337, in _configure_all
-    configure_mappers()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 3229, in configure_mappers
-    mapper._post_configure_properties()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 1947, in _post_configure_properties
-    prop.init()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 196, in init
-    self.do_init()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/relationships.py", line 1864, in do_init
-    self._generate_backref()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/relationships.py", line 2121, in _generate_backref
-    mapper._configure_property(backref_key, relationship)
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/mapper.py", line 1840, in _configure_property
-    prop.init()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 196, in init
-    self.do_init()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/relationships.py", line 1866, in do_init
-    super(RelationshipProperty, self).do_init()
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 570, in do_init
-    self.strategy = self._get_strategy(self.strategy_key)
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 540, in _get_strategy
-    cls = self._strategy_lookup(self, *key)
-  File "/home/rafael/anaconda3/lib/python3.7/site-packages/sqlalchemy/orm/interfaces.py", line 619, in _strategy_lookup
-    key,
-sqlalchemy.orm.exc.LoaderStrategyException: Can't find strategy (('lazy', 'dynami'),) for User.followers
+  File "/home/rafael/Documents/meu/microblog/app/api/users.py", line 7, in get_user
+    return jsonify(User.query.get_or_404(id).to_dict())
+  File "/home/rafael/Documents/meu/microblog/app/models.py", line 201, in to_dict
+    'self': url_for('api.get_user', id=self.id),
+NameError: name 'url_for' is not defined
+2019-10-13 11:32:35,620 ERROR: Exception on /api/users/1 [GET] [in /home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/rafael/Documents/meu/microblog/app/api/users.py", line 7, in get_user
+    return jsonify(User.query.get_or_404(id).to_dict())
+  File "/home/rafael/Documents/meu/microblog/app/models.py", line 201, in to_dict
+    'self': url_for('api.get_user', id=self.id),
+NameError: name 'url_for' is not defined
+2019-10-13 11:33:01,446 ERROR: Exception on /api/users/1 [GET] [in /home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/rafael/Documents/meu/microblog/app/api/users.py", line 7, in get_user
+    return jsonify(User.query.get_or_404(id).to_dict())
+  File "/home/rafael/Documents/meu/microblog/app/models.py", line 201, in to_dict
+    'self': url_for('api.get_user', id=self.id),
+NameError: name 'url_for' is not defined
+2019-10-13 11:33:14,226 INFO: Microblog startup [in /home/rafael/Documents/meu/microblog/app/__init__.py:85]
+2019-10-13 11:36:06,040 INFO: Microblog startup [in /home/rafael/Documents/meu/microblog/app/__init__.py:85]
+2019-10-13 11:38:32,232 ERROR: Exception on /api/users [GET] [in /home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2019-10-13 14:54:18,946 INFO: Microblog startup [in /home/rafael/Documents/meu/microblog/app/__init__.py:85]
+2019-10-13 14:55:54,824 ERROR: Exception on /api/users [GET] [in /home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/rafael/Documents/meu/microblog/venv/lib/python3.6/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/rafael/Documents/meu/microblog/app/api/users.py", line 11, in get_users
+    page = request.args.get('page', 1, type=int)
+NameError: name 'request' is not defined
